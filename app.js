@@ -5,6 +5,10 @@
   const $$ = (sel, ctx = doc) => Array.from(ctx.querySelectorAll(sel));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  if (typeof IntersectionObserver === "undefined") {
+    doc.documentElement.classList.remove("js");
+  }
+
   $("#year").textContent = new Date().getFullYear();
   $("#printBtn").addEventListener("click", () => window.print());
 
